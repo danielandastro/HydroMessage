@@ -60,7 +60,7 @@ namespace HydroMessage
 
                     if (flag == true)
                     {
-                        broadcastBytes = Encoding.ASCII.GetBytes(uName + " says : " + msg);
+                        broadcastBytes = Encoding.ASCII.GetBytes(uName + ": " + msg);
                     }
                     else
                     {
