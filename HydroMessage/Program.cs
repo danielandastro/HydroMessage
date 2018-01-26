@@ -38,7 +38,7 @@ namespace HydroMessage
 
                     broadcast(dataFromClient + " Joined ", dataFromClient, false);
 
-                    Console.WriteLine(dataFromClient + " Joined chat room ");
+                    Console.WriteLine(dataFromClient + " Joined this server ");
                     handleClinet client = new handleClinet();
                     client.startClient(clientSocket, dataFromClient, clientsList);
                 }
@@ -70,8 +70,8 @@ namespace HydroMessage
                     broadcastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
                     broadcastStream.Flush();
                 }
-            }  //end broadcast function
-        }//end Main class
+            }
+        }
 
 
         public class handleClinet
@@ -115,7 +115,7 @@ namespace HydroMessage
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        Console.WriteLine(ex);
                     }
                 }
             }
