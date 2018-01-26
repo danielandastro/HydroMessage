@@ -14,7 +14,7 @@ namespace HydroMessage
             static void Main(string[] args)
             {
                 Console.WriteLine("Welcome to HydroMessage server ver 0.1");
-                TcpListener serverSocket = new TcpListener(1617);
+                TcpListener serverSocket = new TcpListener(1622);
                 TcpClient clientSocket = default(TcpClient);
                 int counter = 0;
 
