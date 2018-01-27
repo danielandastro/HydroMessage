@@ -15,7 +15,7 @@ namespace HydroMessage_Client
 {
     public partial class HydroMessage_Client : Form
     {
-        System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
+        TcpClient clientSocket = new System.Net.Sockets.TcpClient();
         NetworkStream serverStream = default(NetworkStream);
         string readData = null;
         public HydroMessage_Client()
@@ -59,8 +59,8 @@ namespace HydroMessage_Client
                 buffSize = clientSocket.ReceiveBufferSize;
 
                 try { serverStream.Read(inStream, 0, buffSize); }
-                catch (System.ArgumentOutOfRangeException) { }
-                string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+                catch (ArgumentOutOfRangeException) { }
+                string returndata = Encoding.ASCII.GetString(inStream);
                 readData = "" + returndata;
                 msg();
             }
