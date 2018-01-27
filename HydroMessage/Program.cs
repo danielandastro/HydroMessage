@@ -30,7 +30,8 @@ namespace HydroMessage
                     string dataFromClient = null;
 
                     NetworkStream networkStream = clientSocket.GetStream();
-                    networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
+                    try { networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize); }
+                    catch (System.ArgumentOutOfRangeException) { }
                     dataFromClient = System.Text.Encoding.ASCII.GetString(bytesFrom);
                     dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
 
