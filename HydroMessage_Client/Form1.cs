@@ -15,7 +15,7 @@ namespace HydroMessage_Client
 {
     public partial class HydroMessage_Client : Form
     {
-        System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
+        TcpClient clientSocket = new TcpClient();
         NetworkStream serverStream = default(NetworkStream);
         string readData = null;
         public HydroMessage_Client()
@@ -30,7 +30,7 @@ namespace HydroMessage_Client
 
         private void sndBttn_Click(object sender, EventArgs e)
         {
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(textBox2.Text + "$");
+            byte[] outStream = Encoding.ASCII.GetBytes(textBox2.Text + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
         }
@@ -42,7 +42,7 @@ namespace HydroMessage_Client
             clientSocket.Connect(serverIPInput.Text, 1622);
             serverStream = clientSocket.GetStream();
 
-            byte[] outStream = System.Text.Encoding.ASCII.GetBytes(usnmInput.Text + "$");
+            byte[] outStream = Encoding.ASCII.GetBytes(usnmInput.Text + "$");
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
@@ -59,8 +59,8 @@ namespace HydroMessage_Client
                 buffSize = clientSocket.ReceiveBufferSize;
 
                 try { serverStream.Read(inStream, 0, buffSize); }
-                catch (System.ArgumentOutOfRangeException) { }
-                string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+                catch (ArgumentOutOfRangeException) { }
+                string returndata = Encoding.ASCII.GetString(inStream);
                 readData = "" + returndata;
                 msg();
             }
