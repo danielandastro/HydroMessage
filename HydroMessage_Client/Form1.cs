@@ -15,7 +15,7 @@ namespace HydroMessage_Client
 {
     public partial class HydroMessage_Client : Form
     {
-        TcpClient clientSocket = new TcpClient();
+        TcpClient clientSocket = new System.Net.Sockets.TcpClient();
         NetworkStream serverStream = default(NetworkStream);
         string readData = null;
         public HydroMessage_Client()
